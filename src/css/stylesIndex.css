@@ -131,6 +131,7 @@ main {
 }
 @media (max-width: 768px) {
     .footer-nav{
+        position: absolute;
         bottom: calc(40px + 10%);
     }
 }
