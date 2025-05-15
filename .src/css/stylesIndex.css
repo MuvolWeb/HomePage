@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sons-serif;
+}
+body {
+    height: 100vh;
+    background-color: rgb(247, 242, 200);
+    display: flex;
+}
+main {
+    padding: 20px;
+    position: fixed;
+    z-index: 1;
+    padding-left: calc(62px + 20px);
+}
+#side-bar {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: space-between;
+    background-color: #ffffff;
+    height: 100vh;
+    border-radius: 0 18px 18px 0;
+    transition: all .1s;
+    min-height: 82px;
+    z-index: 2;
+}
+#side-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 5px;
+    list-style: none;
+}
+.side-item {
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+}
+.side-item.active {
+    background-color: #4f46e5;
+}
+
+.side-item:hover:not(.active) {
+    background-color: #e3e9f7;
+}
+
+.side-item a{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0a0a0a;
+    gap: 8px;
+}
+.side-item.active a {
+    color: #e3e9f7;
+}
+.side-item.active a i {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    width: 20px;
+    height: 20px;
+}
+.footer-nav{
+    border-top: 1px solid #e3e9f7;
+    padding: 12px;
+    display: flex;
+}
+
+#open_btn {
+    position: absolute;
+    top: 30px;
+    right: -15px;
+    background-color: #4f46e5;
+    color: #e3e9f7;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    border: none;
+    cursor: pointer;
+}
+.item-description {
+    width: 0px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    transition: width .6s;
+}
+#side-bar.open-sidebar {
+    min-width: 15%;
+}
+#side-bar.open-sidebar .item-description {
+    width: 150px;
+}
+#side-bar.open-sidebar .side-item a{
+    justify-content: flex-start;
+    gap: 14px;
+}
+#open_btn_icon {
+    transition: transform .3s ease;
+}
+.open-sidebar #open_btn_icon {
+    transform: rotate(180deg);
+}
