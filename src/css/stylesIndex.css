@@ -130,8 +130,13 @@ main {
     transform: rotate(180deg);
 }
 @media (max-width: 768px) {
-    .footer-nav{
+    .footer-nav {
         position: absolute;
-        bottom: calc(40px + 10%);
+        bottom: 0;
+        width: 100%;
+        background-color: #000; /* apenas exemplo, opcional */
+        padding: 12px;
+        box-sizing: border-box;      
+
     }
 }
