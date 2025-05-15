@@ -129,3 +129,8 @@ main {
 .open-sidebar #open_btn_icon {
     transform: rotate(180deg);
 }
+@media (max-width: 768px) {
+    .footer-nav{
+        bottom: calc(40px + 10%);
+    }
+}
