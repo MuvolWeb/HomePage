@@ -136,6 +136,7 @@ main {
         width: 100%;
         background-color: #000; /* apenas exemplo, opcional */
         padding: 12px;
-        box-sizing: border-box;
+        box-sizing: border-box;      
+
     }
 }
