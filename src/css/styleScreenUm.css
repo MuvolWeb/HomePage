@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #000;
+  color: #fff;
+}
+
+/* Lista sem marcadores e alinhamento à direita */
+ul {
+  list-style: none;
+  text-align: end;
+}
+
+/* Container geral com posição relativa para elementos filhos */
+.container {
+  position: relative;
+  width: 100%;
+  min-height: 85vh;
+  overflow: hidden;
+}
+
+/* Título posicionado com margem */
+.title {
+  position: relative;
+  margin: 16px 30px;
+  z-index: 3;
+}
+
+/* Texto sobreposto à imagem */
+.caixaDeTexto {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none; /* evita clique acidental */
+}
+
+
+/* Imagem com desfoque e borda arredondada */
+.img_apresentacao {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 85dvh;
+  object-fit: cover;
+  border-radius: 8px;
+  filter: blur(5px);
+  z-index: 0;
+}
+
+/* Gradiente nas bordas via ::after do container */
+.container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent 30%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.85), transparent 30%),
+    linear-gradient(to left, rgba(0, 0, 0, 0.85), transparent 30%),
+    linear-gradient(to right, rgba(0, 0, 0, 0.85), transparent 30%);
+  z-index: 1;
+}
+
+.animavel {
+  opacity: 0;
+  /* Posição inicial diferente para cada item */
+}
+
+#nome-texto, #texto-parteUm, #texto-parteDois {
+    position: absolute;
+    bottom: 153px;
+    left: 50px;
+}
+#texto-parteUm {
+    color: rgb(168, 167, 167);
+    left: 75px;
+    bottom: 133px;
+}
+
+#texto-parteDois {
+    left: unset;
+    right: 70px;
+    bottom: 200px;
+}
+
+#nome-texto.animavel {
+  transform: translateX(-100%);
+  transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+#nome-texto.animavel.entrando {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+#texto-parteUm.animavel {
+  transform: translateY(50%);
+  transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+#texto-parteUm.animavel.entrando {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#texto-parteDois.animavel {
+  transform: translateX(50%);
+  transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+#texto-parteDois.animavel.entrando {
+  opacity: 1;
+  transform: translateX(0);
+}
