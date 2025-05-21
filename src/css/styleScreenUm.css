@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+
 
 * {
   margin: 0;
@@ -7,9 +9,10 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   background: #000;
   color: #fff;
+  display: flex;
 }
 
 /* Lista sem marcadores e alinhamento à direita */
@@ -17,13 +20,18 @@ ul {
   list-style: none;
   text-align: end;
 }
+main {
+    z-index: 1;
+    min-width: 100%;
+}
 
 /* Container geral com posição relativa para elementos filhos */
 .container {
-  position: relative;
-  width: 100%;
-  min-height: 85vh;
-  overflow: hidden;
+    position: relative;
+    width: 100%;
+    min-height: 85vh;
+    overflow: hidden;
+    margin-top: 50px;
 }
 
 /* Título posicionado com margem */
@@ -40,7 +48,7 @@ ul {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 3;
+  z-index: 4;
   pointer-events: none; /* evita clique acidental */
 }
 
@@ -54,7 +62,7 @@ ul {
   object-fit: cover;
   border-radius: 8px;
   filter: blur(5px);
-  z-index: 0;
+  z-index: -1;
 }
 
 /* Gradiente nas bordas via ::after do container */
@@ -69,7 +77,7 @@ ul {
     linear-gradient(to bottom, rgba(0, 0, 0, 0.85), transparent 30%),
     linear-gradient(to left, rgba(0, 0, 0, 0.85), transparent 30%),
     linear-gradient(to right, rgba(0, 0, 0, 0.85), transparent 30%);
-  z-index: 1;
+  z-index: 2;
 }
 
 .animavel {
@@ -79,23 +87,34 @@ ul {
 
 #nome-texto, #texto-parteUm, #texto-parteDois {
     position: absolute;
-    bottom: 153px;
+    top: 0px;
     left: 50px;
+}
+#nome-texto h1{
+    font-size: 60px;
+    letter-spacing: 3px;
+    font-weight: 1000;
+
 }
 #texto-parteUm {
     color: rgb(168, 167, 167);
-    left: 75px;
-    bottom: 133px;
+    letter-spacing: 3px;
+    left: 52px;
+    top: 73px;
+    font-size: 30;
 }
 
 #texto-parteDois {
     left: unset;
+    top: unset;
     right: 70px;
-    bottom: 200px;
+    bottom: 50px;
+    font-size: 25px;
+    color: rgb(222, 222, 222);
 }
 
 #nome-texto.animavel {
-  transform: translateX(-100%);
+  transform: translateX(-50%);
   transition: transform 1s ease-out, opacity 1s ease-out;
 }
 
@@ -122,4 +141,141 @@ ul {
 #texto-parteDois.animavel.entrando {
   opacity: 1;
   transform: translateX(0);
+}
+
+
+.containerCard2 {
+    margin-top: 50px; /* só um margin-top, sem repetir */
+    padding-bottom: 50px;
+    position: relative; /* importante para o ::after absoluto */
+    width: 100%;
+    min-height: 85vh;
+    overflow: hidden;
+    transition: opacity 1s ease-out;
+}
+
+.containerCard2.animavel {
+    transition: opacity 1s ease-out;
+}
+
+.containerCard2.animavel.entrando {
+    opacity: 1;
+}
+
+.containerCard2::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0;
+
+    background:
+    linear-gradient(to right, rgba(0, 0, 0, 1) 50%, transparent 90%),    /* lateral */
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.85) 0%, transparent 30%), /* topo */
+    linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, transparent 30%);   /* base */
+
+    background-repeat: no-repeat;
+    background-size:
+      40% 100%,   /* lateral */
+      100% 50px,  /* topo aumentado para 80px */
+      100% 10px;  /* base */
+
+    background-position:
+      left top,   /* lateral */
+      top,        /* topo simplificado */
+      left bottom; /* base */
+
+    transition: opacity 1s ease;
+}
+
+.containerCard2.animavel::after{
+    transition: all 1s;
+}
+
+.containerCard2.animavel.entrando::after {
+    opacity: 1;
+    width: 100%;
+}
+
+/* Corrigido para usar apenas uma vez e padronizado */
+.img-wrapper {
+  position: relative;
+  width: 100%;
+  max-height: 85vh; /* preferível vh que dvh para mais compatibilidade */
+  overflow: hidden;
+  border-radius: 8px;
+  z-index: 1; /* menos que o ::after para garantir a ordem */
+}
+
+.img_cont {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  z-index: 0;
+  opacity: 0.99;
+}
+
+/* Gradiente com blur vindo da esquerda */
+.img-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  pointer-events: none;
+  z-index: 2;
+
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+
+  /* Mantém o blur só até 40% da largura */
+  mask-image: linear-gradient(to right, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
+  transition: opacity 1s ease;
+  opacity: 1; /* para garantir visibilidade, altere se quiser animar */
+}
+
+.img-wrapper.animavel {
+    transition: all 1s;
+}
+.img-wrapper.animavel.entrando {
+    opacity: 1;
+}
+.img-wrapper.animavel::after {
+    transition: all 1s;
+}
+.img-wrapper.animavel.entrando::after {
+    opacity: 1;
+}
+
+.textoParteTres, .textoParteQuatro{
+    position: absolute;
+    font-size: 15px;
+    color: rgb(222, 222, 222);
+}
+.textoParteTres {
+    left: 100px;
+    top: 90px;
+}
+.textoParteTres.animavel {
+    transform: translateX(-50%);
+    transition: transform 1s ease-out, opacity 1s ease-out;
+}
+.textoParteTres.animavel.entrando {
+    opacity: 1;
+    transform: translateX(0);
+}
+.textoParteQuatro {
+    bottom: 80px;
+    right: 60px;
+}
+.textoParteQuatro.animavel {
+    transform: translateX(50%);
+    transition: transform 1s ease-out, opacity 1s ease-out;
+}
+.textoParteQuatro.animavel.entrando {
+    opacity: 1;
+    transform: translateX(0);
 }
