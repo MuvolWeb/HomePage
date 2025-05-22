@@ -279,3 +279,73 @@ main {
     opacity: 1;
     transform: translateX(0);
 }
+
+@media (max-width: 768px) {
+    html {
+        overflow-x: hidden;
+    }
+    .container{
+        min-height: auto;
+    }
+    .img_apresentacao, .img_cont {
+        height: auto;
+        width: 100vw;
+    }
+    .containerCard2, .containerCard2.animavel.entrando{
+        height: auto;
+        min-height: unset;
+        padding: 0;
+        margin: 0;
+    }
+    #card1 {margin-top: 20%;
+        margin-bottom: 30%;
+    }
+    .caixaDeTexto {
+        min-height: 100%;
+    }
+    #nome-texto h1{
+        font-size: 16px;
+    }
+    #texto-parteUm {
+        top: 20px;
+        font-size: 8px;
+    }
+    #texto-parteDois {
+        font-size: 12px;
+        right: 10px;
+        bottom: 0px;
+    }
+    .textoParteTres {
+        font-size: 9px;
+        top: 30px;
+        left: 40px;
+    }
+    .textoParteQuatro{
+        bottom: 20px;
+        font-size: 9px;
+        right: 10px;
+    }
+    .containerCard2.animavel {
+    transition: opacity 3s ease-out;
+}
+    .img-wrapper.animavel {
+        transition: all 4s;
+    }
+    .img-wrapper.animavel.entrando {
+        opacity: 1;
+    }
+    .img-wrapper.animavel::after {
+        transition: all 4s;
+    }
+    .img-wrapper.animavel.entrando::after {
+        opacity: 1;
+    }
+    .textoParteTres.animavel {
+    transform: translateX(-50%);
+    transition: transform 4s ease-out, opacity 4s ease-out;
+}
+.textoParteQuatro.animavel {
+    transform: translateX(50%);
+    transition: transform 4s ease-out, opacity 4s ease-out;
+}
+}

@@ -146,12 +146,11 @@ main {
 }
 @media (max-width: 768px) {
     .footer-nav {
-        position: absolute;
+        position: fixed;
         bottom: 0;
-        width: 100%;
+        width: auto;
         background-color: #000; /* apenas exemplo, opcional */
         padding: 12px;
         box-sizing: border-box;      
-
     }
 }
